@@ -1,0 +1,4 @@
+LiquidCrystal I2C
+HCSR04 ultrasonic distance sensor
+ServoESP32
+PubSubClient

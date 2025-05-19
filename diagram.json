@@ -1,0 +1,59 @@
+{
+  "version": 1,
+  "author": "Jorge Romero",
+  "editor": "wokwi",
+  "parts": [
+    { "type": "board-esp32-devkit-c-v4", "id": "esp", "top": -67.2, "left": 14.44, "attrs": {} },
+    {
+      "type": "wokwi-lcd1602",
+      "id": "lcd1",
+      "top": -70.4,
+      "left": 188,
+      "attrs": { "pins": "i2c" }
+    },
+    {
+      "type": "wokwi-hc-sr04",
+      "id": "ultrasonic1",
+      "top": -209.7,
+      "left": 5.5,
+      "attrs": { "distance": "200" }
+    },
+    { "type": "wokwi-relay-module", "id": "relay1", "top": 173, "left": 192, "attrs": {} },
+    {
+      "type": "wokwi-led",
+      "id": "ledVerde",
+      "top": 159.6,
+      "left": -101.8,
+      "rotate": 270,
+      "attrs": { "color": "green" }
+    },
+    {
+      "type": "wokwi-led",
+      "id": "ledVermelho",
+      "top": 236.4,
+      "left": -82.6,
+      "rotate": 270,
+      "attrs": { "color": "red" }
+    }
+  ],
+  "connections": [
+    [ "esp:TX", "$serialMonitor:RX", "", [] ],
+    [ "esp:RX", "$serialMonitor:TX", "", [] ],
+    [ "lcd1:SDA", "esp:21", "green", [ "v-4.49", "h-28.8", "v23.89" ] ],
+    [ "lcd1:GND", "esp:GND.2", "black", [ "h-16.67", "v162.78" ] ],
+    [ "lcd1:VCC", "esp:3V3", "red", [ "h-9.6", "v-57.5", "h-134.55" ] ],
+    [ "lcd1:SCL", "esp:22", "purple", [ "h-19.2", "v-18.9" ] ],
+    [ "esp:GND.3", "ultrasonic1:GND", "black", [ "h28.8", "v-124.8" ] ],
+    [ "ultrasonic1:TRIG", "esp:4", "cyan", [ "v19.2", "h66.8", "v220.8" ] ],
+    [ "ultrasonic1:ECHO", "esp:5", "yellow", [ "v38.4", "h37.6", "v192" ] ],
+    [ "ultrasonic1:VCC", "esp:5V", "red", [ "h-86.4", "v249.6" ] ],
+    [ "relay1:GND", "esp:GND.1", "black", [ "h-19.2", "v-115.6" ] ],
+    [ "relay1:VCC", "esp:3V3", "red", [ "h-192", "v-230.4" ] ],
+    [ "relay1:IN", "esp:2", "green", [ "h-38.4", "v-115.4" ] ],
+    [ "ledVerde:A", "esp:13", "green", [ "v-83.6", "h83.85" ] ],
+    [ "ledVerde:C", "esp:GND.1", "black", [ "v20", "h80" ] ],
+    [ "ledVermelho:A", "esp:12", "red", [ "v0" ] ],
+    [ "ledVermelho:C", "esp:GND.1", "black", [ "v20", "h84", "v-200", "h-19.35" ] ]
+  ],
+  "dependencies": {}
+}
