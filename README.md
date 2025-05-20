@@ -1,3 +1,6 @@
+---
+
+````markdown
 # 💧 Monitoramento de Nível com ESP32 e MQTT
 
 Este projeto utiliza um ESP32 para monitorar o nível de um reservatório de água com sensor ultrassônico, exibindo os dados localmente em um display LCD e remotamente via MQTT na plataforma ThingsBoard.
@@ -9,53 +12,90 @@ Este projeto utiliza um ESP32 para monitorar o nível de um reservatório de ág
 - ESP32 DevKit-C V4
 - Sensor ultrassônico HC-SR04
 - Display LCD 16x2 (I2C)
-- Relé
-- LEDs (verde e vermelho)
-- Cabos e jumpers
+- Módulo Relé
+- LEDs: verde (normal) e vermelho (alerta)
+- Jumpers e alimentação 5V/3.3V
 
 ---
 
-## ⚙️ Funcionamento
+## ⚙️ Funcionamento do Sistema
 
-1. O sensor HC-SR04 mede a distância até a água.
-2. A distância é convertida em nível de preenchimento.
-3. O display LCD mostra o valor em tempo real.
-4. LEDs indicam o estado (normal ou alerta).
-5. O relé pode ser ativado se o nível estiver baixo.
+1. O sensor ultrassônico mede a distância até a superfície da água.
+2. A distância é convertida em nível percentual.
+3. O LCD exibe a leitura em tempo real.
+4. LEDs indicam o status do reservatório.
+5. O relé pode ativar dispositivos (ex: bomba) automaticamente.
 6. Os dados são publicados via MQTT para o ThingsBoard.
 
 ---
 
 ## 🌐 Comunicação
 
-- Conexão Wi-Fi (TCP/IP)
-- Protocolo MQTT
-- Integração com ThingsBoard usando token do dispositivo
+- Protocolo: MQTT sobre TCP/IP
+- Plataforma: [ThingsBoard Cloud](https://thingsboard.cloud)
+- Bibliotecas:
+  - `WiFi.h`
+  - `PubSubClient`
+  - `LiquidCrystal_I2C`
+  - `HCSR04`
 
 ---
 
-## 📦 Bibliotecas
+## 🛠️ Como Configurar o Projeto
 
-- LiquidCrystal_I2C
-- HCSR04
-- PubSubClient
-- WiFi
+### 📌 Wokwi
 
----
-
-## 📲 Como Usar
-
-1. Configure a rede Wi-Fi e token MQTT no código.
-2. Faça upload para o ESP32.
-3. Acompanhe a leitura no display e na nuvem.
+1. Acesse: [https://wokwi.com/projects/431378864051833857](https://wokwi.com/projects/431378864051833857)
+2. Clique em **"Code"** e cole seu código `.ino`.
+3. Confirme que os componentes estão conectados conforme o `diagram.json`.
+4. Se quiser testar online sem MQTT, comente as funções de Wi-Fi e MQTT no código.
 
 ---
 
-## 🔗 Simulação
+### ☁️ ThingsBoard (MQTT)
 
-Projeto Wokwi:  
-https://wokwi.com/projects/431378864051833857
+1. Acesse [https://thingsboard.cloud](https://thingsboard.cloud) e crie uma conta.
+2. Vá em **Devices > Add new device**.
+3. Copie o **Access Token** do dispositivo.
+4. No código `.ino`, substitua:
+   ```cpp
+   const char* mqttServer = "thingsboard.cloud";
+   const char* token = "SEU_TOKEN_AQUI";
+````
+
+5. Visualize os dados criando um **Dashboard** com widgets conectados ao `device`.
+
+🖼️ Veja o exemplo no arquivo: `DASHBOARD_THINGSBOARD.png`
 
 ---
 
-Desenvolvido por **Jorge Romero** – 2025
+## 📦 Arquivos do Projeto
+
+* `ESP32 NTP Example.ino` → Código principal
+* `diagram.json` → Esquema de montagem
+* `libraries.txt` → Bibliotecas necessárias
+* `DASHBOARD_THINGSBOARD.png` → Exemplo de dashboard
+* `SISTEMA_DIAGRAMJSON.png` → Ilustração do sistema
+* `wokwi-project.txt` → Link para simulação
+
+---
+
+## 👨‍💻 Autor
+
+Desenvolvido por **Jorge Romero**
+Disciplina: Internet das Coisas — 2025
+
+```
+
+---
+
+### ✅ O que esse `README.md` cobre:
+- Descrição geral do sistema
+- Hardware usado
+- Funcionamento passo a passo
+- Instruções completas de **como configurar o Wokwi**
+- Como **integrar o projeto ao ThingsBoard**
+- Referência aos arquivos visuais (`.png`) que você já subiu
+
+Se desejar, posso gerar esse arquivo para você agora no formato `.md`. Deseja que eu envie como arquivo?
+```
