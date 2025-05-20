@@ -58,7 +58,7 @@ Este projeto utiliza um ESP32 para monitorar o nível de um reservatório de ág
    ```cpp
    const char* mqttServer = "thingsboard.cloud";
    const char* token = "SEU_TOKEN_AQUI";
-````
+
 
 5. Visualize os dados criando um **Dashboard** com widgets conectados ao `device`.
 
@@ -82,7 +82,7 @@ Este projeto utiliza um ESP32 para monitorar o nível de um reservatório de ág
 Desenvolvido por **Jorge Romero**
 Disciplina: Internet das Coisas — 2025
 
-```
+
 
 ---
 
@@ -95,4 +95,4 @@ Disciplina: Internet das Coisas — 2025
 - Referência aos arquivos visuais (`.png`) que você já subiu
 
 Se desejar, posso gerar esse arquivo para você agora no formato `.md`. Deseja que eu envie como arquivo?
-```
+
