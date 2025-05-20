@@ -1,6 +1,3 @@
----
-
-````markdown
 # 💧 Monitoramento de Nível com ESP32 e MQTT
 
 Este projeto utiliza um ESP32 para monitorar o nível de um reservatório de água com sensor ultrassônico, exibindo os dados localmente em um display LCD e remotamente via MQTT na plataforma ThingsBoard.
